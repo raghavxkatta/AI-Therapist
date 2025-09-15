@@ -5,7 +5,7 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-
+import { LogoutButton } from "../../components/logoutButton";
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
@@ -157,6 +157,9 @@ export function Sidebar({ className }: SidebarProps) {
                     <NavigationSection title="Support" items={supportItems} isCollapsed={isCollapsed} pathname={pathname} />
                 </div>
             </ScrollArea>
+            <div className="p-4">
+                <LogoutButton />
+            </div>
         </motion.div>
     )
 }
