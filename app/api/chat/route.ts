@@ -35,7 +35,7 @@ User message: "${message}"`
 
     // Save to database if sessionId provided
     if (sessionId) {
-      const supabase = createClient()
+      const supabase = await createClient()
 
       // Save AI response to database
       await supabase.from("messages").insert({
@@ -62,14 +62,16 @@ User message: "${message}"`
       crisisDetected: crisisResult.detected,
       crisisLevel: crisisResult.level,
     })
-  } catch (error) {
-    console.error("Chat API Error:", error)
-    return NextResponse.json(
-      {
-        error: "Failed to generate response",
-        response: "I'm here to listen and support you. Could you tell me more about what's on your mind?",
-      },
-      { status: 500 },
-    )
-  }
+  }  catch (error) {
+  console.error("Chat API Error:", error)
+  // You can also add more details to the response for debugging
+  return NextResponse.json(
+    {
+      error: "Failed to generate response",
+      details: (error as Error).message || "An unknown error occurred.",
+      response: "I'm here to listen and support you. Could you tell me more about what's on your mind?",
+    },
+    { status: 500 },
+  )
+}
 }
