@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
-import { DashboardHeader } from "@/components/dashboard/dashboard-header"
+import { DashboardHeader } from "@/app/dashboard/dashboard-header"
 import { OceanWaves } from "@/components/activities/ocean-waves"
 
 export default async function OceanWavesPage() {

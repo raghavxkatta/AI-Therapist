@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
-import { DashboardHeader } from "@/components/dashboard/dashboard-header"
+import { DashboardHeader } from "@/app/dashboard/dashboard-header"
 import { BreathingExercise } from "@/components/activities/breathing-exercise"
 
 export default async function BreathingPage() {

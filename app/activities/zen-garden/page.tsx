@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
-import { DashboardHeader } from "@/components/dashboard/dashboard-header"
+import { DashboardHeader } from "@/app/dashboard/dashboard-header"
 import { ZenGarden } from "@/components/activities/zen-garden"
 
 export default async function ZenGardenPage() {

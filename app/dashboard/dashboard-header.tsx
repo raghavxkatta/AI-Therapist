@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/app/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/app/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +9,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/app/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu"
 import { Brain, LogOut, Settings, User } from "lucide-react"
 import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
