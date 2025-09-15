@@ -1,9 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card"
+import { Button } from "@/app/components/ui/button"
+import { Alert, AlertDescription } from "@/app/components/ui/alert"
 import { Phone, AlertTriangle, Heart, ExternalLink, Clock } from "lucide-react"
 import { createClient } from "@/lib/supabase/client"
 

@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/app/components/ui/button"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/app/components/ui/card"
 import { Brain, Heart, MessageCircle, TrendingUp, Shield, Moon, Sparkles, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
