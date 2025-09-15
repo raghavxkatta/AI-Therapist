@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MindfulAI
+
+MindfulAI is an AI-powered therapy and mental health support platform. It provides users with empathetic, therapeutic guidance, mood tracking, and crisis detection using advanced AI models.
+
+## Features
+
+- **AI Therapist Chat**: Users interact with a compassionate AI therapist for mental health support.
+- **Crisis Detection**: Automatically detects crisis situations and responds with appropriate empathy and guidance.
+- **Session Logging**: Stores chat sessions and crisis events securely in a Supabase database.
+- **Modern UI**: Uses custom fonts and theming for a clean, accessible interface.
+- **Analytics**: Integrated with Vercel Analytics for usage tracking.
+
+## Tech Stack
+
+- **Next.js** (App Router)
+- **@ai-sdk/google** (Gemini AI model)
+- **Supabase** (Database)
+- **@fontsource/geist-sans, geist-mono** (Typography)
+- **Vercel Analytics**
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Set up environment variables:**
+   - Add your Supabase credentials.
+   - Add your Google Gemini API key.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## API Endpoints
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **POST `/api/chat`**  
+  Send a message to the AI therapist.  
+  **Body:**  
+  ```json
+  {
+    "message": "Your message",
+    "userId": "user-id",
+    "sessionId": "session-id" // optional
+  }
+  ```
+  **Response:**  
+  - `response`: AI-generated reply
+  - `crisisDetected`: boolean
+  - `crisisLevel`: string
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## License
 
-## Learn More
+MIT
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*For educational and support purposes only. Not a substitute for professional mental health care.*
