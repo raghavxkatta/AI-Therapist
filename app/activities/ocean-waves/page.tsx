@@ -7,7 +7,7 @@ import { Slider } from "@/components/ui/slider"
 import { Play, Pause, Volume2, ArrowLeft, Timer } from "lucide-react"
 import Link from "next/link"
 
-export function OceanWaves() {
+export default function OceanWaves() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState([60])
   const [waveIntensity, setWaveIntensity] = useState([50])

@@ -7,7 +7,7 @@ import { Slider } from "@/components/ui/slider"
 import { Play, Pause, Volume2, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
-export function ForestWalk() {
+export default function ForestWalk() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState([70])
   const [currentScene, setCurrentScene] = useState(0)

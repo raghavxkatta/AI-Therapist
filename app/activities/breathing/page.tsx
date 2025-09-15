@@ -7,7 +7,7 @@ import { Progress } from "@/components/ui/progress"
 import { Play, Pause, RotateCcw, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
-export function BreathingExercise() {
+export default function BreathingExercise() {
   const [isActive, setIsActive] = useState(false)
   const [phase, setPhase] = useState<"inhale" | "hold" | "exhale">("inhale")
   const [timeLeft, setTimeLeft] = useState(4)

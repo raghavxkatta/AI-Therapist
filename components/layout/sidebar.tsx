@@ -26,13 +26,13 @@ interface NavItem {
 // --- DATA ---
 const navigationItems: NavItem[] = [
     { title: "Dashboard", href: "/dashboard", icon: Home, description: "Overview and quick actions" },
-    { title: "AI Chat", href: "/dashboard/chat", icon: MessageCircle, description: "Talk with your AI therapist" },
+    { title: "AI Chat", href: "/dashboard", icon: MessageCircle, description: "Talk with your AI therapist" },
     { title: "Mood Tracking", href: "/mood", icon: Heart, description: "Track and analyze your emotions" },
     { title: "Progress", href: "/progress", icon: BarChart3, description: "View your mental health journey" },
 ]
 const activitiesItems: NavItem[] = [
     { title: "All Activities", href: "/activities", icon: Activity, description: "Browse all therapeutic activities" },
-    { title: "Breathing", href: "/activities/breathing", icon: Wind, description: "Guided breathing for relaxation" },
+    { title: "Breathing", href: "/activities/breathing-exercise", icon: Wind, description: "Guided breathing for relaxation" },
     { title: "Zen Garden", href: "/activities/zen-garden", icon: Palette, description: "Draw patterns in virtual sand" },
 ]
 const supportItems: NavItem[] = [

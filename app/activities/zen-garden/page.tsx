@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, RotateCcw, Palette } from "lucide-react"
 import Link from "next/link"
 
-export function ZenGarden() {
+export default function ZenGarden() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isDrawing, setIsDrawing] = useState(false)
   const [brushSize, setBrushSize] = useState(20)
