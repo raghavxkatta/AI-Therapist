@@ -8,11 +8,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, RotateCcw, Palette } from "lucide-react"
 import Link from "next/link"
 
+// Define a type for your patterns to ensure type safety
+type PatternType = "lines" | "circles" | "waves"
+
 export default function ZenGarden() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isDrawing, setIsDrawing] = useState(false)
   const [brushSize, setBrushSize] = useState(20)
-  const [pattern, setPattern] = useState<"lines" | "circles" | "waves">("lines")
+  const [pattern, setPattern] = useState<PatternType>("lines")
+  
+  // Create a strongly-typed array of patterns
+  const patterns: PatternType[] = ["lines", "circles", "waves"]
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -128,12 +134,12 @@ export default function ZenGarden() {
             <div className="flex items-center gap-2">
               <Palette className="h-4 w-4" />
               <span className="text-sm font-medium">Pattern:</span>
-              {["lines", "circles", "waves"].map((p) => (
+              {patterns.map((p) => (
                 <Button
                   key={p}
                   variant={pattern === p ? "default" : "outline"}
                   size="sm"
-                  onClick={() => setPattern(p as any)}
+                  onClick={() => setPattern(p)} // Fixed: No 'as any' needed
                 >
                   {p.charAt(0).toUpperCase() + p.slice(1)}
                 </Button>
