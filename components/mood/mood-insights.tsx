@@ -196,7 +196,7 @@ export function MoodInsights({ moodEntries }: MoodInsightsProps) {
             <div className="text-center space-y-2">
               <div className="text-3xl font-bold text-green-600">{bestDay.score}/10</div>
               <p className="text-sm text-muted-foreground">{bestDay.date}</p>
-              {bestDay.notes && <p className="text-sm italic">"{bestDay.notes}"</p>}
+              {bestDay.notes && <p className="text-sm italic">&quot;{bestDay.notes}&quot;</p>}
             </div>
           </CardContent>
         </Card>

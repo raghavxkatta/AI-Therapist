@@ -89,7 +89,7 @@ export function CrisisSupport({ userId }: CrisisSupportProps) {
         <AlertTriangle className="h-4 w-4" />
         <AlertDescription>
           <strong>
-            If you're in immediate danger or having thoughts of suicide, please call 988 or 911 immediately.
+            If you&apos;re in immediate danger or having thoughts of suicide, please call 988 or 911 immediately.
           </strong>
           <br />
           You are not alone. Professional help is available 24/7.

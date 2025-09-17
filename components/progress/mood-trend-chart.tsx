@@ -28,7 +28,7 @@ export function MoodTrendChart({ moodData }: MoodTrendChartProps) {
           <p className="text-primary">
             Mood: <span className="font-bold">{payload[0].value}/10</span>
           </p>
-          {data.notes && <p className="text-sm text-muted-foreground mt-1 max-w-48">"{data.notes}"</p>}
+          {data.notes && <p className="text-sm text-muted-foreground mt-1 max-w-48">&quot;{data.notes}&quot;</p>}
         </div>
       )
     }

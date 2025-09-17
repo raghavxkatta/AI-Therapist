@@ -234,7 +234,7 @@ export function CrisisAlert({ level, onClose, userId }: CrisisAlertProps) {
 
             <div className="text-center text-sm text-muted-foreground">
               <p>Remember: You are not alone. Professional help is available 24/7.</p>
-              <p>If you're in immediate danger, please call 911 or go to your nearest emergency room.</p>
+              <p>If you&apos;re in immediate danger, please call 911 or go to your nearest emergency room.</p>
             </div>
           </div>
         </DialogContent>

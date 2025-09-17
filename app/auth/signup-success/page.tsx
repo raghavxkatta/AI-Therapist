@@ -19,7 +19,7 @@ export default function SignUpSuccessPage() {
               <Mail className="h-8 w-8 text-primary" />
             </div>
             <CardTitle className="text-2xl">Check Your Email</CardTitle>
-            <CardDescription>We've sent you a confirmation link to complete your registration</CardDescription>
+            <CardDescription>We&apos;ve sent you a confirmation link to complete your registration</CardDescription>
           </CardHeader>
           <CardContent className="text-center">
             <p className="text-sm text-muted-foreground mb-4">
@@ -27,7 +27,7 @@ export default function SignUpSuccessPage() {
               sign in and start your mental wellness journey.
             </p>
             <p className="text-xs text-muted-foreground">
-              Didn't receive the email? Check your spam folder or{" "}
+              Didn&apos;t receive the email? Check your spam folder or{" "}
               <Link href="/auth/signup" className="text-primary hover:underline">
                 try signing up again
               </Link>

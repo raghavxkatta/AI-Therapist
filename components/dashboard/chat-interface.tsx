@@ -252,7 +252,7 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
                     <div className="text-center text-muted-foreground py-8">
                       <Bot className="h-12 w-12 mx-auto mb-4 text-primary" />
                       <p className="text-lg font-medium mb-2">Welcome to your AI therapy session</p>
-                      <p className="text-sm">I'm here to listen and support you. How are you feeling today?</p>
+                      <p className="text-sm">I&apos;m here to listen and support you. How are you feeling today?</p>
                     </div>
                   )}
                   {messages.map((message) => (

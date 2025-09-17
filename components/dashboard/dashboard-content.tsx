@@ -28,7 +28,7 @@ export function DashboardContent({ userId, displayName }: DashboardContentProps)
                     <h1 className="text-3xl font-bold text-foreground">Welcome back, {displayName}</h1>
                 </div>
                 <p className="text-muted-foreground">
-                    How are you feeling today? I'm here to support your mental wellness journey.
+                    How are you feeling today? I&apos;m here to support your mental wellness journey.
                 </p>
             </motion.div>
 
