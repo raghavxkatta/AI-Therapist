@@ -26,7 +26,12 @@ export function MoodChart({ moodEntries }: MoodChartProps) {
       notes: entry.notes,
     }))
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  interface CustomTooltipProps {
+    active?: boolean;
+    payload?: { value: number; payload: { notes?: string } }[];
+    label?: string;
+  }
+  const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload
       return (

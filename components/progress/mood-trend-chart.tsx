@@ -4,8 +4,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from "recharts"
 import { format, parseISO } from "date-fns"
 
+interface MoodEntry {
+  created_at: string;
+  mood_score: number;
+  notes?: string;
+}
 interface MoodTrendChartProps {
-  moodData: any[]
+  moodData: MoodEntry[];
 }
 
 export function MoodTrendChart({ moodData }: MoodTrendChartProps) {
@@ -19,7 +24,12 @@ export function MoodTrendChart({ moodData }: MoodTrendChartProps) {
   const averageMood =
     moodData.length > 0 ? moodData.reduce((sum, entry) => sum + entry.mood_score, 0) / moodData.length : 5
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  interface CustomTooltipProps {
+    active?: boolean;
+    payload?: { value: number; payload: { notes?: string } }[];
+    label?: string;
+  }
+  const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload
       return (

@@ -3,8 +3,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 
+interface ActivityEntry {
+  activity_type?: string;
+  duration_minutes?: number;
+}
 interface ActivityChartProps {
-  activityData: any[]
+  activityData: ActivityEntry[];
 }
 
 export function ActivityChart({ activityData }: ActivityChartProps) {
@@ -25,7 +29,12 @@ export function ActivityChart({ activityData }: ActivityChartProps) {
       .reduce((sum, a) => sum + (a.duration_minutes || 0), 0),
   }))
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  interface CustomTooltipProps {
+    active?: boolean;
+    payload?: { value: number; payload: { duration?: number } }[];
+    label?: string;
+  }
+  const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload
       return (

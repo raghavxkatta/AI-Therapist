@@ -4,9 +4,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 import { format, parseISO, endOfWeek, eachWeekOfInterval, subWeeks } from "date-fns"
 
+interface SessionEntry {
+  created_at: string;
+  messages?: { content: string }[];
+}
+interface MoodEntry {
+  created_at: string;
+  mood_score: number;
+}
 interface EngagementChartProps {
-  sessionData: any[]
-  moodData: any[]
+  sessionData: SessionEntry[];
+  moodData: MoodEntry[];
 }
 
 export function EngagementChart({ sessionData, moodData }: EngagementChartProps) {
@@ -47,12 +55,17 @@ export function EngagementChart({ sessionData, moodData }: EngagementChartProps)
 
   const chartData = generateWeeklyData()
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  interface CustomTooltipProps {
+    active?: boolean;
+    payload?: { name: string; value: number; color?: string }[];
+    label?: string;
+  }
+  const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-background border rounded-lg p-3 shadow-lg">
           <p className="font-medium">Week of {label}</p>
-          {payload.map((entry: any, index: number) => (
+          {payload.map((entry, index) => (
             <p key={index} style={{ color: entry.color }}>
               {entry.name}: <span className="font-bold">{entry.value}</span>
             </p>

@@ -11,8 +11,15 @@ interface CrisisSupportProps {
   userId: string
 }
 
+interface CrisisEvent {
+  id: string;
+  user_id: string;
+  created_at: string;
+  [key: string]: unknown;
+}
+
 export function CrisisSupport({ userId }: CrisisSupportProps) {
-  const [recentCrisisEvents, setRecentCrisisEvents] = useState<any[]>([])
+  const [recentCrisisEvents, setRecentCrisisEvents] = useState<CrisisEvent[]>([])
   const supabase = createClient()
 
   useEffect(() => {
