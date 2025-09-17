@@ -4,10 +4,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { TrendingUp, TrendingDown, Award, Target, Lightbulb } from "lucide-react"
 
+
+interface MoodEntry {
+  mood_score: number;
+  created_at: string;
+}
+interface SessionEntry {
+  messages?: { content: string }[];
+  created_at: string;
+}
+interface ActivityEntry {
+  created_at: string;
+}
+
 interface ProgressInsightsProps {
-  moodData: any[]
-  sessionData: any[]
-  activityData: any[]
+  moodData: MoodEntry[];
+  sessionData: SessionEntry[];
+  activityData: ActivityEntry[];
 }
 
 export function ProgressInsights({ moodData, sessionData, activityData }: ProgressInsightsProps) {

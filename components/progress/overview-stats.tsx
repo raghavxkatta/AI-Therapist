@@ -3,10 +3,23 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { TrendingUp, TrendingDown, MessageCircle, Activity, Calendar, Target } from "lucide-react"
 
+
+interface MoodEntry {
+  mood_score: number;
+  [key: string]: any;
+}
+interface SessionEntry {
+  messages?: { [key: string]: any }[];
+  [key: string]: any;
+}
+interface ActivityEntry {
+  [key: string]: any;
+}
+
 interface OverviewStatsProps {
-  moodData: any[]
-  sessionData: any[]
-  activityData: any[]
+  moodData: MoodEntry[];
+  sessionData: SessionEntry[];
+  activityData: ActivityEntry[];
 }
 
 export function OverviewStats({ moodData, sessionData, activityData }: OverviewStatsProps) {

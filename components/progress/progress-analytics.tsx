@@ -12,17 +12,30 @@ import { ProgressInsights } from "@/components/progress/progress-insights"
 import { GoalTracking } from "@/components/progress/goal-tracking"
 import { TrendingUp, Calendar, Target, Brain, Download } from "lucide-react"
 
+
+interface MoodEntry {
+  mood_score: number;
+  created_at: string;
+}
+interface SessionEntry {
+  messages?: { content: string }[];
+  created_at: string;
+}
+interface ActivityEntry {
+  created_at: string;
+}
+
 interface ProgressAnalyticsProps {
-  userId: string
-  moodData: any[]
-  sessionData: any[]
-  activityData: any[]
+  userId: string;
+  moodData: MoodEntry[];
+  sessionData: SessionEntry[];
+  activityData: ActivityEntry[];
 }
 
 export function ProgressAnalytics({ userId, moodData, sessionData, activityData }: ProgressAnalyticsProps) {
   const [timeRange, setTimeRange] = useState("30")
 
-  const filterDataByTimeRange = (data: any[], days: number) => {
+  const filterDataByTimeRange = (data: { created_at: string }[], days: number) => {
     const cutoffDate = new Date()
     cutoffDate.setDate(cutoffDate.getDate() - days)
     return data.filter((item) => new Date(item.created_at) >= cutoffDate)
