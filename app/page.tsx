@@ -299,7 +299,8 @@ export default function HomePage() {
               MindfulAI
             </span>
           </motion.div>
-          <p className="text-muted-foreground">&copy; 2024 MindfulAI. Your mental health matters.</p>
+          <p className="text-muted-foreground">&copy; 2025 MindfulAI. Your mental health matters.</p>
+          <p className="animate-pulse mt-1">Built By Raghav Katta</p>
         </div>
       </motion.footer>
     </div>

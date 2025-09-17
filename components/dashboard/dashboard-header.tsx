@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Brain, LogOut, Settings, User } from "lucide-react"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 import type { User as SupabaseUser } from "@supabase/supabase-js"
@@ -45,6 +46,7 @@ export function DashboardHeader({ user, profile }: DashboardHeaderProps) {
         </div>
 
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <span className="text-sm text-muted-foreground hidden sm:block">Welcome back, {displayName}</span>
 
           <DropdownMenu>

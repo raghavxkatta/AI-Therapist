@@ -246,7 +246,7 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
               <CardTitle className="text-lg">AI Therapy Chat</CardTitle>
             </CardHeader>
             <CardContent className="flex-1 flex flex-col p-0">
-              <ScrollArea className="flex-1 p-4">
+              <div className="flex-1 overflow-y-auto p-4" style={{ minHeight: 0, maxHeight: 400 }}>
                 <div className="space-y-4">
                   {messages.length === 0 && (
                     <div className="text-center text-muted-foreground py-8">
@@ -310,7 +310,7 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
                   )}
                   <div ref={messagesEndRef} />
                 </div>
-              </ScrollArea>
+              </div>
 
               <div className="border-t p-4">
                 <form onSubmit={sendMessage} className="flex gap-2">
