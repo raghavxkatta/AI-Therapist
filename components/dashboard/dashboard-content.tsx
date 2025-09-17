@@ -93,7 +93,7 @@ export function DashboardContent({ userId, displayName }: DashboardContentProps)
                     className="space-y-6"
                 >
                     <MoodTracker userId={userId} />
-                    <QuickActions />
+                   
                 </motion.div>
             </div>
         </div>
