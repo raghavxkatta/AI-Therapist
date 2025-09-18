@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Brain, Heart, MessageCircle, TrendingUp, Shield, Moon, Sparkles, ArrowRight } from "lucide-react"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
@@ -71,6 +72,7 @@ export default function HomePage() {
             </h1>
           </motion.div>
           <div className="flex items-center gap-4">
+            <ThemeToggle />
             <Link href="/auth/signin">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button variant="ghost" className="hover:bg-primary/10">

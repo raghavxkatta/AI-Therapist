@@ -20,8 +20,13 @@ export function LogoutButton({ collapsed }: LogoutButtonProps) {
         <button
             onClick={handleLogout}
             disabled={loading}
-            className={`flex items-center justify-center gap-2 px-4 py-2 rounded-md font-semibold shadow w-full transition-all duration-200 mt-4
-                ${loading ? "bg-blue-200 text-blue-400 cursor-not-allowed" : "bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"}`}
+            className={
+                collapsed
+                    ? `flex items-center justify-center rounded-full w-12 h-12 shadow transition-all duration-200 mt-4
+                        ${loading ? "bg-blue-200 text-blue-400 cursor-not-allowed" : "bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"}`
+                    : `flex items-center justify-center gap-2 px-4 py-2 rounded-md font-semibold shadow w-full transition-all duration-200 mt-4
+                        ${loading ? "bg-blue-200 text-blue-400 cursor-not-allowed" : "bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"}`
+            }
             aria-label="Log out"
         >
             {loading ? (

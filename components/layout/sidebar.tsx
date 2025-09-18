@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { LogoutButton } from "../../components/logoutButton";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
@@ -175,7 +176,9 @@ export function Sidebar({ className }: SidebarProps) {
                     <NavigationSection title="Support" items={supportItems} isCollapsed={isCollapsed} pathname={pathname} />
                 </div>
             </ScrollArea>
-            <div className="p-4">
+            <div className="mt-auto  flex flex-col items-center gap-1 w-full">
+                <ThemeToggle />
+                <Separator className=" w-2/3 mx-auto" />
                 <LogoutButton collapsed={isCollapsed} />
             </div>
         </motion.div>
