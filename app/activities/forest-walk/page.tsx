@@ -7,6 +7,12 @@ import { Slider } from "@/components/ui/slider"
 import { Play, Pause, Volume2, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
+const audioFiles = [
+  "/forestbirds-319791.mp3", // Morning Forest
+  "/sound-of-flowing-river-346329.mp3", // Forest Stream
+  "/forest-soundscape-night-time-403609.mp3", // Deep Woods
+]
+
 export default function ForestWalk() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState([70])
@@ -35,18 +41,29 @@ export default function ForestWalk() {
   ]
 
   useEffect(() => {
-    // Simulate audio setup
-    audioRef.current = new Audio()
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause()
-      }
+    // When scene changes, pause audio and reset isPlaying
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current.currentTime = 0
     }
-  }, [])
+    setIsPlaying(false)
+  }, [currentScene])
+
+  useEffect(() => {
+    // Set volume when it changes
+    if (audioRef.current) {
+      audioRef.current.volume = volume[0] / 100
+    }
+  }, [volume])
 
   const togglePlayback = () => {
+    if (!audioRef.current) return
+    if (isPlaying) {
+      audioRef.current.pause()
+    } else {
+      audioRef.current.play()
+    }
     setIsPlaying(!isPlaying)
-    // In a real implementation, this would control actual audio playback
   }
 
   const handleVolumeChange = (value: number[]) => {
@@ -106,11 +123,18 @@ export default function ForestWalk() {
                 alt={scenes[currentScene].title}
                 className="w-full h-64 object-cover rounded-lg"
               />
+              <audio
+                ref={audioRef}
+                src={audioFiles[currentScene] || undefined}
+                onEnded={() => setIsPlaying(false)}
+                style={{ display: "none" }}
+              />
               <div className="absolute inset-0 bg-black/20 rounded-lg flex items-center justify-center">
                 <Button
                   onClick={togglePlayback}
                   size="lg"
                   className="h-16 w-16 rounded-full bg-white/90 hover:bg-white text-black"
+                  disabled={!audioFiles[currentScene]}
                 >
                   {isPlaying ? <Pause className="h-8 w-8" /> : <Play className="h-8 w-8 ml-1" />}
                 </Button>
