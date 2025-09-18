@@ -137,7 +137,7 @@ export default function HomePage() {
               MindfulAI
             </h1>
           </motion.div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <ThemeToggle />
             <Link href="/auth/signin">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -146,19 +146,22 @@ export default function HomePage() {
                 </Button>
               </motion.div>
             </Link>
-            <Link href="/auth/signup">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
-                  Get Started
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </motion.div>
-            </Link>
+            {/* Hide Get Started button on small screens */}
+            <div className="hidden sm:block">
+              <Link href="/auth/signup">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
+                    Get Started
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </motion.div>
+              </Link>
+            </div>
           </div>
         </div>
       </motion.header>
 
-      <section className="container mx-auto px-4 py-20 text-center">
+      <section className="container mx-auto px-4 py-16 sm:py-20 text-center">
         <motion.div className="max-w-4xl mx-auto" variants={containerVariants} initial="hidden" animate="visible">
           <motion.div variants={itemVariants} className="relative">
             <motion.div
@@ -168,14 +171,14 @@ export default function HomePage() {
             >
               <Sparkles className="h-8 w-8" />
             </motion.div>
-            <h2 className="text-6xl font-bold text-balance mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+            <h2 className="text-4xl xs:text-5xl sm:text-6xl font-bold text-balance mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
               Your Personal AI Therapist
             </h2>
           </motion.div>
 
           <motion.p
             variants={itemVariants}
-            className="text-xl text-muted-foreground text-balance mb-8 leading-relaxed max-w-3xl mx-auto"
+            className="text-base xs:text-lg sm:text-xl text-muted-foreground text-balance mb-8 leading-relaxed max-w-3xl mx-auto"
           >
             Experience compassionate AI-powered therapy with real-time emotional support, mood tracking, and interactive
             therapeutic activities designed for your mental wellness journey.
@@ -183,10 +186,10 @@ export default function HomePage() {
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/auth/signup">
-              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }} className="group">
+              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }} className="group w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg hover:shadow-xl"
+                  className="w-full sm:w-auto text-lg px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg hover:shadow-xl"
                 >
                   Start Your Journey
                   <motion.div
@@ -203,19 +206,19 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-16 sm:py-20">
         <motion.h3
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-16 text-balance bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+          className="text-2xl xs:text-3xl sm:text-4xl font-bold text-center mb-10 sm:mb-16 text-balance bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
         >
           Comprehensive Mental Health Support
         </motion.h3>
 
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -263,10 +266,10 @@ export default function HomePage() {
                   >
                     <feature.icon className="h-8 w-8 text-primary group-hover:text-secondary transition-colors" />
                   </motion.div>
-                  <CardTitle className="text-xl mb-3 group-hover:text-primary transition-colors">
+                  <CardTitle className="text-base xs:text-lg sm:text-xl mb-2 sm:mb-3 group-hover:text-primary transition-colors">
                     {feature.title}
                   </CardTitle>
-                  <CardDescription className="text-base leading-relaxed">{feature.description}</CardDescription>
+                  <CardDescription className="text-sm xs:text-base sm:text-base leading-relaxed">{feature.description}</CardDescription>
                 </CardHeader>
               </Card>
             </motion.div>
@@ -275,25 +278,25 @@ export default function HomePage() {
       </section>
 
       <motion.section
-        className="relative bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 py-20 overflow-hidden"
+        className="relative bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 py-16 sm:py-20 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
         <motion.div
-          className="absolute top-10 left-10 text-primary/20"
+          className="absolute top-4 xs:top-10 left-4 xs:left-10 text-primary/20"
           animate={{ y: [-10, 10, -10] }}
           transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
         >
-          <Heart className="h-16 w-16" />
+          <Heart className="h-12 w-12 xs:h-16 xs:w-16" />
         </motion.div>
         <motion.div
-          className="absolute bottom-10 right-10 text-secondary/20"
+          className="absolute bottom-4 xs:bottom-10 right-4 xs:right-10 text-secondary/20"
           animate={{ y: [10, -10, 10] }}
           transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
         >
-          <Brain className="h-20 w-20" />
+          <Brain className="h-16 w-16 xs:h-20 xs:w-20" />
         </motion.div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -302,7 +305,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-4xl font-bold mb-6 text-balance"
+            className="text-2xl xs:text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 text-balance"
           >
             Ready to Begin Your Mental Health Journey?
           </motion.h3>
@@ -311,7 +314,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xl text-muted-foreground mb-8 text-balance max-w-2xl mx-auto"
+            className="text-base xs:text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 text-balance max-w-2xl mx-auto"
           >
             Join thousands who have found support, healing, and growth with MindfulAI
           </motion.p>
@@ -323,10 +326,11 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
+              className="w-full sm:w-auto"
             >
               <Button
                 size="lg"
-                className="text-lg px-12 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-xl hover:shadow-2xl"
+                className="w-full sm:w-auto text-lg px-8 sm:px-12 py-5 sm:py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-xl hover:shadow-2xl"
               >
                 Get Started Today
                 <motion.div
@@ -344,34 +348,34 @@ export default function HomePage() {
 
       {/* FAQ Section - Animated */}
       <motion.section
-        className="container mx-auto px-4 py-20"
+        className="container mx-auto px-4 py-16 sm:py-20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <h3 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <h3 className="text-2xl xs:text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
           Frequently Asked Questions
         </h3>
         <FAQList />
       </motion.section>
 
       <motion.footer
-        className="border-t bg-muted/30 py-12"
+        className="border-t bg-muted/30 py-8 sm:py-12"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
         <div className="container mx-auto px-4 text-center">
-          <motion.div className="flex items-center justify-center gap-2 mb-4" whileHover={{ scale: 1.05 }}>
-            <Brain className="h-6 w-6 text-primary" />
-            <span className="text-lg font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <motion.div className="flex items-center justify-center gap-2 mb-2 sm:mb-4" whileHover={{ scale: 1.05 }}>
+            <Brain className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+            <span className="text-base sm:text-lg font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               MindfulAI
             </span>
           </motion.div>
-          <p className="text-muted-foreground">&copy; 2025 MindfulAI. Your mental health matters.</p>
-          <p className="animate-pulse mt-1">Built By Raghav Katta</p>
+          <p className="text-xs sm:text-base text-muted-foreground">&copy; 2025 MindfulAI. Your mental health matters.</p>
+          <p className="animate-pulse mt-1 text-xs sm:text-base">Built By Raghav Katta</p>
         </div>
       </motion.footer>
     </div>
