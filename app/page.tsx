@@ -6,6 +6,8 @@ import { Brain, Heart, MessageCircle, TrendingUp, Shield, Moon, Sparkles, ArrowR
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import "./faq-animate.css"
+import React from "react"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -48,6 +50,70 @@ const cardVariants = {
       ease: "easeInOut",
     },
   },
+}
+
+function FAQList() {
+  const faqs = [
+    {
+      q: "What is MindfulAI?",
+      a: "MindfulAI is an AI-powered mental health platform offering therapy chat, mood tracking, and interactive therapeutic activities to support your well-being.",
+    },
+    {
+      q: "Is my data private and secure?",
+      a: "Yes. Your privacy is our top priority. All conversations and mood data are encrypted and never shared without your consent.",
+    },
+    {
+      q: "Can I use MindfulAI for crisis situations?",
+      a: "MindfulAI offers real-time crisis detection and resources, but it is not a substitute for professional help. If you are in crisis, please contact a mental health professional or emergency services.",
+    },
+    {
+      q: "How much does it cost?",
+      a: "You can get started for free! We offer premium features for advanced analytics and personalized care, but the core experience is always accessible.",
+    },
+    {
+      q: "Who is behind MindfulAI?",
+      a: "MindfulAI is built by a team of mental health professionals, AI researchers, and passionate developers dedicated to making mental wellness accessible to all.",
+    },
+  ]
+  const [openIndex, setOpenIndex] = React.useState<number | null>(null)
+  return (
+    <div className="max-w-2xl mx-auto flex flex-col gap-6">
+      {faqs.map((faq, i) => (
+        <div
+          key={faq.q}
+          className={
+            "border border-primary/15 rounded-xl bg-background/90 shadow-sm transition-all overflow-hidden" +
+            (openIndex === i ? " shadow-lg" : "")
+          }
+        >
+          <button
+            className={
+              "w-full flex items-center gap-3 cursor-pointer text-lg font-semibold text-left px-6 py-4 select-none transition-colors group " +
+              (openIndex === i ? "bg-primary/5 text-primary" : "")
+            }
+            aria-expanded={openIndex === i}
+            onClick={() => setOpenIndex(openIndex === i ? null : i)}
+          >
+            <span className="flex-1">{faq.q}</span>
+            <span
+              className={
+                "transition-transform duration-300 text-xl text-primary/70" +
+                (openIndex === i ? " rotate-90" : "")
+              }
+            >
+              &#8250;
+            </span>
+          </button>
+          <div
+            className={"faq-animate px-6 pb-4 pt-1" + (openIndex === i ? " open" : "")}
+            aria-hidden={openIndex !== i}
+          >
+            <p className="text-muted-foreground text-base leading-relaxed">{faq.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default function HomePage() {
@@ -285,6 +351,20 @@ export default function HomePage() {
             </motion.div>
           </Link>
         </div>
+      </motion.section>
+
+      {/* FAQ Section - Animated */}
+      <motion.section
+        className="container mx-auto px-4 py-20"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <h3 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          Frequently Asked Questions
+        </h3>
+        <FAQList />
       </motion.section>
 
       <motion.footer
