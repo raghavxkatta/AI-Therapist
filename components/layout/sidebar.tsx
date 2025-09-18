@@ -177,8 +177,7 @@ export function Sidebar({ className }: SidebarProps) {
                 </div>
             </ScrollArea>
             <div className="mt-auto  flex flex-col items-center gap-1 w-full">
-                <ThemeToggle />
-                <Separator className=" w-2/3 mx-auto" />
+                
                 <LogoutButton collapsed={isCollapsed} />
             </div>
         </motion.div>
