@@ -10,6 +10,7 @@ import { Brain, Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
+import { FcGoogle } from "react-icons/fc"
 
 export default function SignInPage() {
   const [email, setEmail] = useState("")
@@ -33,6 +34,25 @@ export default function SignInPage() {
 
       if (error) throw error
       router.push("/dashboard")
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : "An error occurred")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleGoogleSignIn = async () => {
+    setIsLoading(true)
+    setError(null)
+    try {
+      const supabase = createClient()
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: typeof window !== "undefined" ? window.location.origin + "/dashboard" : undefined,
+        },
+      })
+      if (error) throw error
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred")
     } finally {
@@ -113,6 +133,23 @@ export default function SignInPage() {
                 {isLoading ? "Signing In..." : "Sign In"}
               </Button>
             </form>
+
+            <div className="my-6 flex items-center gap-2">
+              <div className="flex-1 h-px bg-muted" />
+              <span className="text-xs text-muted-foreground">or</span>
+              <div className="flex-1 h-px bg-muted" />
+            </div>
+
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full h-12 text-lg flex items-center justify-center gap-2"
+              onClick={handleGoogleSignIn}
+              disabled={isLoading}
+            >
+              <FcGoogle className="h-6 w-6" />
+              Continue with Google
+            </Button>
 
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
