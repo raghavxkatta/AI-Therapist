@@ -199,17 +199,6 @@ export default function HomePage() {
                 </Button>
               </motion.div>
             </Link>
-            <Link href="/demo">
-              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-lg px-8 py-6 border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 bg-transparent"
-                >
-                  Try Demo
-                </Button>
-              </motion.div>
-            </Link>
           </motion.div>
         </motion.div>
       </section>
