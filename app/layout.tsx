@@ -5,6 +5,8 @@ import "@fontsource/geist-mono"
 
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
+
+import { WithSidebar } from "@/components/layout/with-sidebar"
 import { Suspense } from "react"
 import "./globals.css"
 
@@ -27,7 +29,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <WithSidebar>{children}</WithSidebar>
         </ThemeProvider>
 
         {/* The Suspense component can be used for streaming UI, but it's not strictly necessary here. It doesn't cause any harm. */}
@@ -35,5 +37,5 @@ export default function RootLayout({
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
