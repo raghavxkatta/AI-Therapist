@@ -17,19 +17,19 @@ export default function ForestWalk() {
     {
       title: "Morning Forest",
       description: "Gentle bird songs and rustling leaves in the early morning light",
-      image: "/peaceful-morning-forest-with-sunlight.jpg",
+      image: "/morningForest.webp",
       sounds: ["birds", "leaves", "gentle wind"],
     },
     {
       title: "Forest Stream",
       description: "The soothing sound of water flowing over rocks",
-      image: "/forest-stream-with-rocks-and-moss.jpg",
+      image: "/forestStream.webp",
       sounds: ["water", "birds", "nature"],
     },
     {
       title: "Deep Woods",
       description: "Immerse yourself in the heart of an ancient forest",
-      image: "/deep-forest-with-tall-trees-and-filtered-light.jpg",
+      image: "/deepWoods.webp",
       sounds: ["wind", "leaves", "distant birds"],
     },
   ]
