@@ -46,26 +46,53 @@ interface NavigationSectionProps {
 }
 
 function NavigationSection({ title, items, isCollapsed, pathname }: NavigationSectionProps) {
+    if (isCollapsed) {
+        // Spread out icons vertically when collapsed
+        return (
+            <nav className="flex flex-col items-center gap-y-8 py-4 h-full">
+                {items.map((item) => {
+                    const isActive = item.href === "/dashboard"
+                        ? pathname === item.href
+                        : pathname.startsWith(item.href);
+                    return (
+                        <Link key={item.title} href={item.href}>
+                            <motion.div
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.95 }}
+                                className={cn(
+                                    "flex flex-col items-center justify-center p-2 rounded-lg transition-colors",
+                                    "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+                                    isActive
+                                        ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-sm"
+                                        : "text-sidebar-foreground",
+                                )}
+                            >
+                                <item.icon className="h-5 w-5 flex-shrink-0" />
+                            </motion.div>
+                        </Link>
+                    );
+                })}
+            </nav>
+        );
+    }
+    // Default expanded layout
     return (
         <div>
             <AnimatePresence>
-                {!isCollapsed && (
-                    <motion.h3
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="px-3 mb-3 text-xs font-semibold text-sidebar-foreground/70 uppercase tracking-wider"
-                    >
-                        {title}
-                    </motion.h3>
-                )}
+                <motion.h3
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="px-3 mb-3 text-xs font-semibold text-sidebar-foreground/70 uppercase tracking-wider"
+                >
+                    {title}
+                </motion.h3>
             </AnimatePresence>
             <nav className="space-y-3">
                 {items.map((item) => {
-                    const isActive = item.href === "/dashboard" 
-                        ? pathname === item.href 
+                    const isActive = item.href === "/dashboard"
+                        ? pathname === item.href
                         : pathname.startsWith(item.href);
-
                     return (
                         <Link key={item.title} href={item.href}>
                             <motion.div
@@ -81,18 +108,16 @@ function NavigationSection({ title, items, isCollapsed, pathname }: NavigationSe
                             >
                                 <item.icon className="h-5 w-5 flex-shrink-0" />
                                 <AnimatePresence>
-                                    {!isCollapsed && (
-                                        <motion.div
-                                            initial={{ opacity: 0, x: -10 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            exit={{ opacity: 0, x: -10 }}
-                                            transition={{ duration: 0.2 }}
-                                            className="flex-1 min-w-0"
-                                        >
-                                            <div className="font-medium text-sm">{item.title}</div>
-                                            <div className="text-xs opacity-70 truncate">{item.description}</div>
-                                        </motion.div>
-                                    )}
+                                    <motion.div
+                                        initial={{ opacity: 0, x: -10 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: -10 }}
+                                        transition={{ duration: 0.2 }}
+                                        className="flex-1 min-w-0"
+                                    >
+                                        <div className="font-medium text-sm">{item.title}</div>
+                                        <div className="text-xs opacity-70 truncate">{item.description}</div>
+                                    </motion.div>
                                 </AnimatePresence>
                             </motion.div>
                         </Link>
