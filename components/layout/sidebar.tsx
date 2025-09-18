@@ -26,15 +26,11 @@ interface NavItem {
 // --- DATA ---
 const navigationItems: NavItem[] = [
     { title: "Dashboard", href: "/dashboard", icon: Home, description: "Overview and quick actions" },
-    { title: "AI Chat", href: "/dashboard", icon: MessageCircle, description: "Talk with your AI therapist" },
     { title: "Mood Tracking", href: "/mood", icon: Heart, description: "Track and analyze your emotions" },
     { title: "Progress", href: "/progress", icon: BarChart3, description: "View your mental health journey" },
+    { title: "Activities", href: "/activities", icon: Activity, description: "Browse all therapeutic activities" },
 ]
-const activitiesItems: NavItem[] = [
-    { title: "All Activities", href: "/activities", icon: Activity, description: "Browse all therapeutic activities" },
-    { title: "Breathing", href: "/activities/breathing-exercise", icon: Wind, description: "Guided breathing for relaxation" },
-    { title: "Zen Garden", href: "/activities/zen-garden", icon: Palette, description: "Draw patterns in virtual sand" },
-]
+
 const supportItems: NavItem[] = [
     { title: "Crisis Support", href: "/crisis", icon: Shield, description: "Emergency mental health resources" },
     { title: "Settings", href: "/settings", icon: Settings, description: "Customize your experience" },
@@ -64,7 +60,7 @@ function NavigationSection({ title, items, isCollapsed, pathname }: NavigationSe
                     </motion.h3>
                 )}
             </AnimatePresence>
-            <nav className="space-y-1">
+            <nav className="space-y-3">
                 {items.map((item) => {
                     const isActive = item.href === "/dashboard" 
                         ? pathname === item.href 
@@ -148,17 +144,14 @@ export function Sidebar({ className }: SidebarProps) {
                 </Button>
             </div>
 
-            <ScrollArea className="flex-1 px-3 py-4">
-                <div className="space-y-6">
+            <ScrollArea className="flex-1 px-3  py-4">
+                <div className="space-y-12">
                     <NavigationSection title="Main" items={navigationItems} isCollapsed={isCollapsed} pathname={pathname} />
-                    <Separator className="bg-sidebar-border" />
-                    <NavigationSection title="Activities" items={activitiesItems} isCollapsed={isCollapsed} pathname={pathname} />
-                    <Separator className="bg-sidebar-border" />
                     <NavigationSection title="Support" items={supportItems} isCollapsed={isCollapsed} pathname={pathname} />
                 </div>
             </ScrollArea>
             <div className="p-4">
-                <LogoutButton />
+                <LogoutButton collapsed={isCollapsed} />
             </div>
         </motion.div>
     )
