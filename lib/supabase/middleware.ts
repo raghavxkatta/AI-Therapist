@@ -4,7 +4,11 @@ import { NextResponse, type NextRequest } from "next/server"
 
 export async function updateSession(request: NextRequest) {
   try {
-    let supabaseResponse = NextResponse.next({ request })
+    let supabaseResponse = NextResponse.next({
+      request: {
+        headers: request.headers,
+      },
+    })
 
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -15,11 +19,9 @@ export async function updateSession(request: NextRequest) {
             return request.cookies.getAll()
           },
           setAll(cookiesToSet) {
-            cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
-            supabaseResponse = NextResponse.next({ request })
-            cookiesToSet.forEach(({ name, value, options }) =>
+            cookiesToSet.forEach(({ name, value, options }) => {
               supabaseResponse.cookies.set(name, value, options)
-            )
+            })
           },
         },
       }
@@ -39,6 +41,10 @@ export async function updateSession(request: NextRequest) {
   } catch (error) {
     console.error("Supabase middleware error:", error)
     // Return a response to prevent a crash
-    return NextResponse.next({ request })
+    return NextResponse.next({
+      request: {
+        headers: request.headers,
+      },
+    })
   }
 }
