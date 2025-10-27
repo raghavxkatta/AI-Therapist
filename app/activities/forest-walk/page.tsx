@@ -35,7 +35,7 @@ export default function ForestWalk() {
     {
       title: "Deep Woods",
       description: "Immerse yourself in the heart of an ancient forest",
-      image: "/deepwoods.webp",
+      image: "/deepwoodss.webp",
       sounds: ["wind", "leaves", "distant birds"],
     },
   ]
