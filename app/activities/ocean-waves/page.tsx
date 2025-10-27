@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Slider } from "@/components/ui/slider"
@@ -13,6 +13,7 @@ export default function OceanWaves() {
   const [waveIntensity, setWaveIntensity] = useState([50])
   const [timer, setTimer] = useState<number | null>(null)
   const [timeLeft, setTimeLeft] = useState<number | null>(null)
+  const audioRef = useRef<HTMLAudioElement>(null)
 
   const timerOptions = [
     { label: "No Timer", value: null },
@@ -42,6 +43,23 @@ export default function OceanWaves() {
       if (interval) clearInterval(interval)
     }
   }, [isPlaying, timeLeft])
+
+  // Audio control effects
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume[0] / 100
+    }
+  }, [volume])
+
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.play().catch(console.error)
+      } else {
+        audioRef.current.pause()
+      }
+    }
+  }, [isPlaying])
 
   const togglePlayback = () => {
     if (!isPlaying && timer) {
@@ -190,6 +208,14 @@ export default function OceanWaves() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Hidden audio element */}
+      <audio
+        ref={audioRef}
+        loop
+        preload="auto"
+        src="/oceanwaves.mp3"
+      />
     </div>
   )
 }
