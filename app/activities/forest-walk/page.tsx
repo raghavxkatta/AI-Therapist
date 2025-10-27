@@ -23,7 +23,7 @@ export default function ForestWalk() {
     {
       title: "Morning Forest",
       description: "Gentle bird songs and rustling leaves in the early morning light",
-      image: "/morningForest.webp",
+      image: "/morningforest.webp",
       sounds: ["birds", "leaves", "gentle wind"],
     },
     {
@@ -35,7 +35,7 @@ export default function ForestWalk() {
     {
       title: "Deep Woods",
       description: "Immerse yourself in the heart of an ancient forest",
-      image: "/deepWoods.webp",
+      image: "/deepwoods.webp",
       sounds: ["wind", "leaves", "distant birds"],
     },
   ]
