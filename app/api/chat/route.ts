@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    const geminiModel = google("gemini-2.0-flash");
+    const geminiModel = google("gemini-flash-lite-latest");
 
     // Crisis detection
     const crisisResult = detectCrisis(message)
